@@ -1,0 +1,21 @@
+@import "/Theme.scss";
+.searchBar-section {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__input {
+    border: 1px solid white;
+    border-radius: 2px;
+    font-size: 1.1rem;
+    color: #c2c2c2;
+    outline: none;
+    padding: 0.3rem 2rem;
+    // width: 70vw;
+    width: 70%;
+    @media (min-width: $breakpoint-desktop-large) {
+      width: 60%;
+      //   width: 50vw;
+    }
+  }
+}

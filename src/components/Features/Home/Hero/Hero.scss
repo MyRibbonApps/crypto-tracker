@@ -1,0 +1,52 @@
+@import "/Theme.scss";
+.hero {
+  height: 100vh;
+  background-image: url("/bg-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  &-wrapper {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__h1 {
+        @media (max-width: $breakpoint-tablet) {
+          font-size: 2rem;
+          width: 90%;
+        }
+        color: white;
+        font-size: 3rem;
+        width: 60%;
+        margin: auto;
+        text-align: center;
+        &--underline {
+          position: relative;
+          z-index: 2;
+          &::after {
+            content: "";
+            position: absolute;
+            border: 7px solid $primary--color;
+            bottom: 5px;
+            right: 0;
+            left: 0;
+            z-index: -1;
+          }
+        }
+      }
+      &__btns {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  }
+}

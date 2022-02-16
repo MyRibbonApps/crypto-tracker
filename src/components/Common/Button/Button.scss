@@ -1,0 +1,29 @@
+@import "/Theme.scss";
+
+.button {
+  @media (max-width: 280px) {
+    font-size: 1rem;
+  }
+  font-size: 1.275rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 300ms;
+  text-align: center;
+  &--primary {
+    background-color: $primary--color;
+    color: white;
+    &:hover {
+      background-color: #116bac;
+      color: white;
+    }
+  }
+  &--white {
+    background-color: white;
+    color: black;
+    &:hover {
+      background-color: whitesmoke;
+      color: black;
+    }
+  }
+}

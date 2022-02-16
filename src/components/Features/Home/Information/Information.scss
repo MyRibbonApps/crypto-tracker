@@ -1,0 +1,49 @@
+@import "/Theme.scss";
+.information-flex {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 75%;
+  }
+  @media (min-width: $breakpoint-desktop-large) {
+    max-width: 100%;
+  }
+  @media (min-width: $breakpoint-tablet) {
+    display: flex;
+    flex-direction: row;
+    align-items: initial;
+    width: 90%;
+    margin: auto;
+  }
+  &__item {
+    width: 80%;
+    @media (min-width: $breakpoint-tablet) {
+      width: 33%;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__h1 {
+      color: white;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      @media (min-width: $breakpoint-desktop) {
+        font-size: 2.4rem;
+      }
+    }
+    &__p {
+      color: white;
+      font-size: 0.8rem;
+      width: 80%;
+      padding-bottom: 1.8rem;
+      @media (min-width: $breakpoint-tablet) {
+        padding-bottom: 0rem;
+        width: 50%;
+      }
+      text-align: center;
+    }
+  }
+}

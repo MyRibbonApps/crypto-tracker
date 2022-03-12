@@ -99,7 +99,7 @@ const Tracker = () => {
           <h1
             style={{ color: "white", textAlign: "center", marginTop: "2rem" }}
           >
-            Oops, something went wrong try again...
+            Oops, something went wrong try again... FROM CHANGETOTABLE
           </h1>
         )}
       </div>

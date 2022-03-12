@@ -1,11 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SearchBar.scss";
 
-const SearchBar = () => {
+const SearchBar = ({ searchResults }) => {
   const [input, setInput] = useState("");
   const search = () => {
     console.log(input);
+    return input;
   };
+
+  useEffect(() => {
+    if (input !== "") {
+      const optimisation = setTimeout(async () => {
+        try {
+          const data = await fetch(`url/${search()}`);
+          const results = await data?.json();
+          searchResults(results);
+        } catch (e) {
+          searchResults([]);
+          console.log(e);
+        }
+      }, 1000);
+      return function () {
+        clearTimeout(optimisation);
+      };
+    } else {
+      searchResults(null);
+    }
+  }, [input]);
+
   return (
     <section className="searchBar-section">
       <input

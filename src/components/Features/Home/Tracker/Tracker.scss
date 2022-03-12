@@ -1,12 +1,7 @@
 @import "/Theme.scss";
 .tracker-section {
   padding-top: 4rem;
-  //   @media (min-width: $breakpoint-desktop-large) {
-  // max-width: 70%;
-  // margin: auto;
-  //   }
   &__tracker {
-    // background-color: rgb(41, 41, 41);
     padding-top: 3rem;
     max-width: 70%;
     @media (min-width: $breakpoint-desktop-large) {
@@ -66,10 +61,6 @@
             border: 4px solid $primary--color;
             bottom: 6px;
           }
-          //   @media (min-width: $breakpoint-tablet) {
-          // bottom: 10px;
-          // border: 5px solid $primary--color;
-          //   }
         }
       }
       &--underline {

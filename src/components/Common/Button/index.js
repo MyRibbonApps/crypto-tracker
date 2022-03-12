@@ -1,8 +1,11 @@
 import "./Button.scss";
-const Button = ({ text, primary }) => {
+const Button = ({ text, primary, propFunc = null }) => {
   return (
     <>
-      <a className={`button${primary ? " button--primary" : " button--white"}`}>
+      <a
+        onClick={() => (propFunc ? propFunc() : null)}
+        className={`button${primary ? " button--primary" : " button--white"}`}
+      >
         {text}
       </a>
     </>

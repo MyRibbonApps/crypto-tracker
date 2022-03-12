@@ -5,7 +5,7 @@ import cross from "../../../x.png";
 import menu from "../../../menu.png";
 import { useState } from "react";
 
-const Nav = () => {
+const Nav = ({ propFunc }) => {
   const [open, setOpen] = useState(false);
   return (
     <nav className="nav">
@@ -23,6 +23,12 @@ const Nav = () => {
           <li className="nav-ul__items__li">
             <a className="nav-ul__items__li__item">Track crypto</a>
           </li>
+          <li className="nav-ul__items__li">
+            <a className="nav-ul__items__li__item">Sign in</a>
+          </li>
+          <li className="nav-ul__items__li">
+            <a className="nav-ul__items__li__item">Sign up</a>
+          </li>
           <li className="nav-ul__items__li__cross">
             <img
               onClick={() => setOpen(false)}
@@ -30,7 +36,10 @@ const Nav = () => {
               src={cross}
             ></img>
           </li>
-          <li className="nav-ul__items__li nav-ul__items__li--btn">
+          <li
+            onClick={() => propFunc()}
+            className="nav-ul__items__li nav-ul__items__li--btn"
+          >
             <Button text={"Track now!"} primary={true} />
           </li>
         </div>

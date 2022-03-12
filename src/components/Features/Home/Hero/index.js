@@ -1,11 +1,11 @@
 import Nav from "../../../AppShell/Nav";
 import Button from "../../../Common/Button";
 import "./Hero.scss";
-const Hero = () => {
+const Hero = ({ scrollToTracker }) => {
   return (
     <>
       <main className="hero">
-        <Nav />
+        <Nav propFunc={scrollToTracker} />
         <div className="hero-wrapper">
           <section className="hero-wrapper-container">
             <div className="hero-wrapper-container__textwrapper">
@@ -18,7 +18,11 @@ const Hero = () => {
               </h1>
             </div>
             <div className="hero-wrapper-container__btns">
-              <Button text={"Track Now!"} primary={true} />
+              <Button
+                propFunc={scrollToTracker}
+                text={"Track Now!"}
+                primary={true}
+              />
               <Button text={"Learn More"} primary={false} />
             </div>
           </section>

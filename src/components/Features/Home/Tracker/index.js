@@ -81,23 +81,9 @@ const Tracker = () => {
       </div>
       <div className="tracker-section__tracker">
         {/* <h1 style={{ color: "white" }}>Categories</h1> */}
-        <section className="trackeritem-section trackeritem-section__info">
-          <div className="trackeritem-section--coin-row">
-            <div className="trackeritem-section--coin">
-              <h1 className="trackeritem-section__h1">Name</h1>
-              <h1 className="trackeritem-section__h1"> </h1>
-              <h1 className="trackeritem-section__h1"></h1>
-            </div>
-            <div className="trackeritem-section--coin-data">
-              <p className="trackeritem-section__p">Price</p>
-              <p className="trackeritem-section__p">24%</p>
-            </div>
-            <div className="trackeritem-section--coin-data">
-              <p className="trackeritem-section__p">Markte cap</p>
-              <p className="trackeritem-section__p">Volume</p>
-            </div>
-          </div>
-        </section>
+        <table>
+          <tr></tr>
+        </table>
         {dataToRender ? (
           <div>
             {dataToRender.map((item) => {

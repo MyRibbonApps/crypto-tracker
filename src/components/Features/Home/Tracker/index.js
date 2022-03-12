@@ -93,7 +93,7 @@ const Tracker = () => {
                 </div>
               );
             })}
-            PREV NEXT
+            PREV NEXT MASTER BUTTONS
           </div>
         ) : (
           <h1

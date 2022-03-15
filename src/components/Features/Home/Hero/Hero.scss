@@ -1,16 +1,47 @@
 @import "/Theme.scss";
 .hero {
-  height: 100vh;
-  background-image: url("/bg-img-crypto.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 80vh;
+  position: relative;
+  &-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("/bg-img-crypto.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+    z-index: 2;
+  }
+  &::before {
+    content: "";
+    // position: absolute;
+    // top: 0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    // background-image: url("/bg-img-crypto.jpg");
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // filter: blur(8px);
+    // z-index: 0;
+    // background: linear-gradient(
+    //   1.58deg,
+    //   rgb(0, 0, 0) 0.21%,
+    //   rgba(34, 34, 34, 0) 50.79%
+    // );
+  }
   &-wrapper {
     height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 2;
+
     &-container {
+      z-index: 2;
       display: flex;
       flex-direction: column;
       justify-content: center;

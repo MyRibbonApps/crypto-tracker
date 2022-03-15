@@ -4,8 +4,9 @@ import "./Hero.scss";
 const Hero = ({ scrollToTracker }) => {
   return (
     <>
+      <Nav propFunc={scrollToTracker} />
       <main className="hero">
-        <Nav propFunc={scrollToTracker} />
+        <div className="hero-bg"></div>
         <div className="hero-wrapper">
           <section className="hero-wrapper-container">
             <div className="hero-wrapper-container__textwrapper">

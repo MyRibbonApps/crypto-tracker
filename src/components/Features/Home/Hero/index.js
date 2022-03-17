@@ -24,7 +24,7 @@ const Hero = ({ scrollToTracker }) => {
                 text={"Track Now!"}
                 primary={true}
               />
-              <Button text={"Learn More"} primary={false} />
+              <Button text={"Learn More"} primary={false} transparent={false} />
             </div>
           </section>
         </div>

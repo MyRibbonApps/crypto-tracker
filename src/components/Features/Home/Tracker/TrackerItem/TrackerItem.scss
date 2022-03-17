@@ -2,7 +2,7 @@
 // Skeleton loading
 .skeleton {
   opacity: 0.5;
-  animation: skeleton-loading 1s linear infinite alternate;
+  // animation: skeleton-loading 1s linear infinite alternate;
   background-color: grey;
 }
 .skeleton-text-wrapper {
@@ -48,14 +48,14 @@
   width: 80%;
   border-radius: 0.125rem;
 }
-@keyframes skeleton-loading {
-  0% {
-    background-color: grey;
-  }
-  100% {
-    background-color: rgb(233, 233, 233);
-  }
-}
+// @keyframes skeleton-loading {
+//   0% {
+//     background-color: grey;
+//   }
+//   100% {
+//     background-color: rgb(233, 233, 233);
+//   }
+// }
 .trackeritem-section {
   // display: flex;
   padding: 1rem 0;

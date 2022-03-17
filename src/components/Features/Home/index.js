@@ -12,6 +12,13 @@ const Home = () => {
       behavior: "smooth",
     });
   };
+  useEffect(() => {
+    (async () => {
+      const news = await fetch("http://localhost:3001/api/getNews");
+      const result = await news.json();
+      console.log(result);
+    })();
+  }, []);
   return (
     <div className="landing-page">
       <Hero scrollToTracker={scrollToTracker} />

@@ -1,10 +1,16 @@
 import "./Button.scss";
-const Button = ({ text, primary, propFunc = null }) => {
+const Button = ({ text, primary, transparent = true, propFunc = null }) => {
   return (
     <>
       <a
         onClick={() => (propFunc ? propFunc() : null)}
-        className={`button${primary ? " button--primary" : " button--white"}`}
+        className={`button${
+          primary
+            ? " button--primary"
+            : transparent
+            ? " button--transparent"
+            : " button--white"
+        }`}
       >
         {text}
       </a>

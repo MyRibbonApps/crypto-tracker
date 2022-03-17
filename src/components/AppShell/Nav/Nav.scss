@@ -1,39 +1,285 @@
 @import "/Theme.scss";
+$breakpointcollapsenav: 900px;
+
+@mixin skeleton {
+  opacity: 0.5;
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 2px;
+  height: 10px;
+  @keyframes skeleton-loading {
+    0% {
+      background-color: rgb(56, 60, 80);
+    }
+    100% {
+      background-color: rgb(111, 117, 131);
+    }
+  }
+}
 .nav {
-  padding: 2rem 2rem;
-  @media (min-width: $breakpoint-desktop-large) {
-    max-width: 70%;
-    margin: auto;
+  padding-top: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 15px;
+
+  @media (min-width: 860px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: $breakpointcollapsenav) {
+    padding: 32px 16px;
+  }
+  position: sticky;
+  top: 0;
+  // Z-index for making the nav above the backgriund blur in the Hero component
+  z-index: 3;
+  transition: 300ms;
+  // background: rgba(0, 0, 0, 0.9);
+  // @media (min-width: $breakpoint-desktop-large) {
+  //   max-width: 70%;
+  //   margin: auto;
+  // }
+  &--blackbg {
+    background: rgba(0, 0, 0, 0.9);
   }
   &__logo {
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: $breakpointcollapsenav) {
     }
     @media (max-width: 280px) {
-      height: 0.8rem;
+      height: 12.8px;
     }
-    height: 1.2rem;
+    @media (max-width: $breakpointcollapsenav) {
+      height: 19px;
+    }
+    @media (min-width: $breakpointcollapsenav) {
+      height: 13px;
+    }
+    @media (min-width: $breakpoint-desktop) {
+      height: 16px;
+    }
+
     cursor: pointer;
   }
   &__menu {
-    height: 1.2rem;
+    height: 19.2px;
     position: absolute;
-    right: 2rem;
-    top: 2rem;
-    @media (min-width: $breakpoint-tablet) {
+    right: 32px;
+    top: 32px;
+    @media (min-width: $breakpointcollapsenav) {
       display: none;
     }
   }
   &-ul {
-    @media (min-width: $breakpoint-tablet) {
+    @media (min-width: $breakpoint-maxwidth) {
+      max-width: $breakpoint-maxwidth;
+      margin: auto;
+    }
+    // START OF INPUT SECTION
+    &-inputwrapper {
+      // @media (min-width: $breakpoint-tablet) {
+      //   display: none;
+      // }
+      @media (min-width: 970px) {
+        display: initial;
+      }
+      &-inputcontainer {
+        background-color: rgb(23, 25, 36);
+        cursor: text;
+        border-radius: 5px;
+        padding: 9px 16px;
+        @media (max-width: $breakpointcollapsenav) {
+          width: 98%;
+          margin: auto;
+          margin-top: 15px;
+        }
+        width: 100%;
+        border: 2px solid transparent;
+        display: flex;
+        align-items: center;
+        @media (min-width: $breakpointcollapsenav) {
+          margin-top: 0px;
+        }
+        &--active {
+          border: 2px solid #777777;
+        }
+        &__icon {
+          margin-right: 8px;
+          height: 16px;
+          cursor: default;
+        }
+      }
+
+      @media (min-width: $breakpointcollapsenav) {
+        width: 50%;
+        max-width: 450px;
+        margin-left: 32px;
+        margin-right: 16px;
+        position: relative;
+        &__input {
+          // background-color: rgb(23, 25, 36);
+          // border-radius: 5px;
+          // padding: 0.6rem 1rem;
+          width: 100%;
+          // border: 2px solid transparent;
+          outline: none;
+          color: rgb(187, 187, 187);
+          &:focus {
+            // border: 2px solid #777777;
+          }
+        }
+        &__form {
+          width: 100%;
+        }
+      }
+      @media (max-width: $breakpointcollapsenav) {
+        width: 100%;
+        // position: relative;
+        &__input {
+          // background-color: rgb(23, 25, 36);
+          // border-radius: 5px;
+          // padding: 0.6rem 1rem;
+          width: 100%;
+          // border: 2px solid transparent;
+          outline: none;
+          color: rgb(187, 187, 187);
+          &:focus {
+            // border: 2px solid #777777;
+          }
+        }
+        &__form {
+          width: 100%;
+        }
+      }
+      &-searchresults {
+        // display: none;
+        background-color: rgb(23, 25, 36);
+        // height: 200px;
+        max-height: 300px;
+        overflow-y: scroll;
+        top: 110%;
+        right: 0;
+        left: 0;
+        width: 100%;
+        max-width: 450px;
+        @media (max-width: $breakpointcollapsenav) {
+          top: 92%;
+          width: 95%;
+          margin: auto;
+          max-width: 100%;
+        }
+        border-radius: 5px;
+        position: absolute;
+        &-resultwrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 16px;
+          padding: 8px 16px;
+          transition: 300ms;
+          &:hover {
+            background-color: rgb(33, 36, 51);
+            cursor: pointer;
+          }
+          &-leftcontent {
+            display: flex;
+            align-items: center;
+            &__img {
+              height: 20px;
+              &--skeleton {
+                width: 30px;
+                margin-top: 10px;
+                @include skeleton;
+              }
+            }
+            &__name {
+              margin-left: 8px;
+              color: rgb(223, 223, 223);
+              font-size: 12px;
+              font-weight: 500;
+              @media (min-width: $breakpoint-desktop) {
+                font-size: 15px;
+              }
+              &--skeleton {
+                width: 80px;
+                margin-left: 10px;
+                margin-top: 10px;
+                @include skeleton;
+              }
+            }
+            &__symbol {
+              margin-left: 6.4px;
+              color: #a1a7bb;
+              font-size: 11px;
+              font-weight: 500;
+              @media (min-width: $breakpoint-desktop) {
+                font-size: 13px;
+              }
+              &--skeleton {
+                width: 20px;
+                margin-left: 10px;
+                margin-top: 10px;
+                @include skeleton;
+              }
+            }
+          }
+          &-rightcontent {
+            &__cap {
+              color: #a1a7bb;
+              font-size: 11px;
+              font-weight: 500;
+              @media (min-width: $breakpoint-desktop) {
+                font-size: 13px;
+              }
+              &--skeleton {
+                // display: block;
+                @include skeleton;
+                margin-top: 10px;
+                margin-left: 10px;
+                width: 30px;
+              }
+            }
+          }
+          &-noresults {
+            &__h1 {
+              font-size: 16px;
+              color: white;
+              font-weight: 400;
+              text-align: center;
+              padding-top: 30px;
+            }
+            &__p {
+              font-size: 14px;
+              color: rgb(207, 214, 228);
+              font-weight: 300;
+              text-align: center;
+              width: 80%;
+              margin: auto;
+              padding-bottom: 20px;
+            }
+          }
+        }
+      }
+    }
+    // END OF INPUT SECTION
+    @media (min-width: $breakpointcollapsenav) {
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
-      padding: 0rem 2rem;
+      padding: 0rem 32px;
+      &-links {
+        display: flex;
+        align-items: center;
+      }
+      &-buttons {
+        display: flex;
+        align-items: center;
+      }
     }
 
     &__items {
       display: flex;
-      @media (max-width: $breakpoint-tablet) {
+      justify-content: space-between;
+      width: 100%;
+      @media (max-width: $breakpointcollapsenav) {
         display: block;
         background-color: white;
         width: 100%;
@@ -42,10 +288,9 @@
         left: 0;
         height: 100%;
         // transform: translateY(-100%);
-        z-index: 3;
         transition: 300ms;
-        padding-left: 2rem;
-        padding-top: 2rem;
+        padding-left: 32px;
+        padding-top: 32px;
         visibility: hidden;
         &--active {
           top: 0%;
@@ -55,15 +300,20 @@
       }
       &__li {
         // @media (min-width: $breakpoint-tablet) {
-        padding: 0 1rem;
-        padding-bottom: 0.7rem;
+        padding: 0 11.2px;
+        padding-bottom: 11.2px;
+        @media (min-width: $breakpointcollapsenav) {
+          padding-bottom: 0rem;
+        }
         // }
         &__item {
           color: black;
-          font-size: 1.3rem;
-          @media (min-width: $breakpoint-tablet) {
-            color: white;
-            font-size: 1.1rem;
+          font-size: 21px;
+          white-space: nowrap;
+          font-weight: 500;
+          @media (min-width: $breakpointcollapsenav) {
+            color: rgb(194, 194, 194);
+            font-size: 15px;
           }
           cursor: pointer;
           transition: 300ms;
@@ -72,7 +322,7 @@
           }
         }
         &__cross {
-          @media (min-width: $breakpoint-tablet) {
+          @media (min-width: $breakpointcollapsenav) {
             display: none;
           }
           position: absolute;
@@ -84,7 +334,7 @@
           }
         }
         &--btn {
-          @media (max-width: $breakpoint-tablet) {
+          @media (max-width: $breakpointcollapsenav) {
             position: absolute;
             bottom: 2%;
             left: 0;
@@ -93,6 +343,41 @@
             flex-direction: column;
             margin: auto;
             width: 90%;
+            &--lastonmobile {
+              bottom: 6%;
+              // Here we set the text color to black because the mobile nav background is white.
+              > * {
+                color: black;
+              }
+            }
+          }
+          padding: 0 0.3rem;
+        }
+        // &--searchicon {
+        //   height: 2.4rem;
+        //   width: 2.4rem;
+        //   border-radius: 50%;
+        //   border: 1px solid grey;
+        //   display: flex;
+        //   justify-content: center;
+        //   align-items: center;
+        //   margin-right: 0.4rem;
+        //   &__icon {
+        //     height: 1.2rem;
+        //   }
+        //   @media (min-width: 970px) {
+        //     display: none;
+        //   }
+        // }
+        &--hideatsmaller {
+          @media (max-width: $breakpointcollapsenav) {
+            display: initial;
+          }
+          @media (min-width: $breakpointcollapsenav) {
+            display: none;
+          }
+          @media (min-width: 990px) {
+            display: initial;
           }
         }
       }

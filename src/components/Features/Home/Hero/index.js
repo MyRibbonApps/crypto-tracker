@@ -1,10 +1,10 @@
-import Nav from "../../../AppShell/Nav";
+import Nav from "../../../AppShell/Nav/Navbar.js";
 import Button from "../../../Common/Button";
 import "./Hero.scss";
 const Hero = ({ scrollToTracker }) => {
   return (
     <>
-      <Nav propFunc={scrollToTracker} />
+      {/* <Nav propFunc={scrollToTracker} /> */}
       <main className="hero">
         <div className="hero-bg"></div>
         <div className="hero-wrapper">

@@ -1,0 +1,60 @@
+@import "/Theme.scss";
+.news {
+  @media (min-width: $breakpoint-desktop) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  &__h1 {
+    color: white;
+    font-size: 40px;
+  }
+  &__p {
+    color: #d6d6d6;
+    font-size: 17px;
+  }
+  &-section {
+    display: flex;
+    overflow-x: scroll;
+    margin-top: 10px;
+    position: relative;
+    &-next {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: white;
+    }
+    a {
+      &:last-of-type {
+        filter: blur(0.7px);
+        .newscard-imagewrapper__arrowicon {
+          display: initial;
+          z-index: initial;
+        }
+        position: relative;
+        // &::before {
+        //   content: "";
+        //   position: absolute;
+        //   top: 3%;
+        //   bottom: 10%;
+        //   right: 3%;
+        //   left: 30%;
+        //   //   background-color: rgb(175, 175, 175, 0.5);
+        //   z-index: 2;
+        //   background-image: linear-gradient(
+        //     to left,
+        //     rgba(26, 26, 26, 0.5) 70%,
+        //     transparent 80%
+        //   );
+        //   cursor: pointer;
+        //   transition: 300ms;
+        //   &:hover {
+        //     transform: scale(1.03);
+        //   }
+        // }
+      }
+    }
+    // &:last-of-type {
+    //   background-color: purple;
+    // }
+  }
+}

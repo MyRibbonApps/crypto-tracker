@@ -1,0 +1,35 @@
+.newscard {
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: 300ms;
+  &:hover {
+    transform: scale(1.03);
+  }
+  &__h1 {
+    color: #d6d6d6;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  &__p {
+    color: #bebebe;
+    font-size: 12px;
+  }
+  &-imagewrapper {
+    position: relative;
+    &__img {
+      width: 285px;
+      height: 138px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    &__arrowicon {
+      height: 20px;
+      position: absolute;
+      top: 40%;
+      right: 0;
+      right: 15%;
+      z-index: 5;
+      display: none;
+    }
+  }
+}

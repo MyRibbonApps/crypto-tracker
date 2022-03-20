@@ -1,0 +1,49 @@
+@import "/Theme.scss";
+
+.searchbar-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding: 8px 16px;
+  transition: 300ms;
+  &:hover {
+    background-color: rgb(33, 36, 51);
+    cursor: pointer;
+  }
+  &-leftcontent {
+    display: flex;
+    align-items: center;
+    &__img {
+      height: 20px;
+    }
+    &__name {
+      margin-left: 8px;
+      color: rgb(223, 223, 223);
+      font-size: 12px;
+      font-weight: 500;
+      @media (min-width: $breakpoint-desktop) {
+        font-size: 15px;
+      }
+    }
+    &__symbol {
+      margin-left: 6.4px;
+      color: #a1a7bb;
+      font-size: 11px;
+      font-weight: 500;
+      @media (min-width: $breakpoint-desktop) {
+        font-size: 13px;
+      }
+    }
+  }
+  &-rightcontent {
+    &__cap {
+      color: #a1a7bb;
+      font-size: 11px;
+      font-weight: 500;
+      @media (min-width: $breakpoint-desktop) {
+        font-size: 13px;
+      }
+    }
+  }
+}

@@ -14,6 +14,10 @@ ul,
 li {
   list-style: none;
 }
+a {
+  text-decoration: none;
+  cursor: default;
+}
 :root {
   --h1: 2.5rem;
   --p1: 1.375rem;
@@ -34,9 +38,11 @@ h1 {
 }
 
 .landing-page {
-  background: linear-gradient(
+  /* height: 100vh; */
+  /* background: linear-gradient(
     173.54deg,
     #000000 73.19%,
     rgba(0, 0, 0, 0.66) 134.45%
-  );
+  ); */
+  background-color: rgb(8, 8, 8);
 }

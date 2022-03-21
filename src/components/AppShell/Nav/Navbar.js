@@ -8,7 +8,7 @@ import logo from "../../../logo.png";
 import cross from "../../../x.png";
 import menu from "../../../menu.png";
 
-const Nav = ({ propFunc }) => {
+const Nav = () => {
   const [open, setOpen] = useState(false);
   const [blackBg, setBgBlack] = useState(false);
 

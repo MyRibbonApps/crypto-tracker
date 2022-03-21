@@ -77,6 +77,7 @@ const SearchbarComponent = ({ onResultClickHandler, onSearchHandler }) => {
 
   return (
     <span
+      data-testid="searchbarID"
       className="searchbar"
       onClick={() => {
         inputReference.current.focus();
@@ -94,6 +95,7 @@ const SearchbarComponent = ({ onResultClickHandler, onSearchHandler }) => {
         <img src={searchIcon} className="searchbar-inputcontainer__icon"></img>
         <form onSubmit={(e) => e.preventDefault()} className="searchbar__form">
           <input
+            data-testid="searchbarInputID"
             ref={inputReference}
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
@@ -134,7 +136,10 @@ const SearchbarComponent = ({ onResultClickHandler, onSearchHandler }) => {
             searchResults.map((coin) => {
               return (
                 <div
-                  onClick={() => onResultClickHandler(coin.id)}
+                  onClick={() => {
+                    resetSearchBar();
+                    onResultClickHandler(coin.id);
+                  }}
                   key={coin.id}
                   className="searchbar-searchresults-resultwrapper"
                 >

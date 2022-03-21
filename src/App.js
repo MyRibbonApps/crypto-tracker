@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Nav from "./components/AppShell/Nav/Navbar.js";
 import Home from "./components/Features/Home";
 import "./App.css";
-import Currency from "./components/Features/Currencies/";
+import Currency from "./components/Features/Currencies";
 import Signup from "./components/Features/Signup";
 
-function App() {
+const App = () => {
   useEffect(() => {
     console.log("APP IS GETTING RENDERED");
   }, []);
@@ -23,6 +23,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

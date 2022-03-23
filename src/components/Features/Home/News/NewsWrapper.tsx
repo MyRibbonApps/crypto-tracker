@@ -32,6 +32,8 @@ const NewsWrapper = () => {
 
       if (new Date(parseDetails.expires).getTime() > new Date().getTime()) {
         const getData = localStorage.getItem("CACHED_NEWS_DATA");
+
+        if (!getData) return null;
         const parseData = JSON.parse(getData);
         return parseData;
       }

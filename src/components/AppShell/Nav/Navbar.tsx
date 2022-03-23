@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Button from "../../Common/Button";
+import Button from "../../Common/Button/index";
 import SearchBarWrapper from "./Searchbar/SearchBarWrapper";
 import "./Navbar.scss";
 

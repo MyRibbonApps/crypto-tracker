@@ -1,10 +1,10 @@
 import { RefObject } from "react";
 
-export default function useDraggableScroll(ref, options) {
+export default function useDraggableScroll(ref: RefObject<HTMLElement>) {
   // The initial position (scroll progress and mouse location) when the mouse is pressed down on the element
   let initialPosition = { scrollLeft: 0, mouseX: 0 };
 
-  const mouseMoveHandler = (event) => {
+  const mouseMoveHandler = (event: { clientX: number }) => {
     if (ref.current) {
       // Calculate differences to see how far the user has moved
       const dx = event.clientX - initialPosition.mouseX;
@@ -25,7 +25,7 @@ export default function useDraggableScroll(ref, options) {
     document.removeEventListener("mouseup", mouseUpHandler);
   };
 
-  const onMouseDown = (event) => {
+  const onMouseDown = (event: { clientX: number }) => {
     if (ref.current) {
       // Save the position at the moment the user presses down
       initialPosition = {

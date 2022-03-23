@@ -1,5 +1,5 @@
 import "./ResultItemComponent.scss";
-const ResultItemComponent = ({ coin }) => {
+const ResultItemComponent = ({ coin }: { coin: any }) => {
   return (
     <>
       <span className="searchbar-result-leftcontent">

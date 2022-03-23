@@ -1,6 +1,7 @@
 import "./NewsCardComponent.scss";
 import arrow from "../../../../../../../src/right-arrow.png";
-const NewsCardComponent = ({ data }) => {
+import { FC } from "react";
+const NewsCardComponent: FC<any> = ({ data }) => {
   return (
     <section className="newscard">
       <div className="newscard-imagewrapper">

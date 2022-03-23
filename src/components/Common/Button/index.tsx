@@ -1,5 +1,18 @@
+import { FC } from "react";
 import "./Button.scss";
-const Button = ({ text, primary, transparent = true, propFunc = null }) => {
+
+type Props = {
+  text: string;
+  primary: boolean;
+  transparent?: boolean;
+  propFunc?: () => void | null;
+};
+const Button: FC<Props> = ({
+  text,
+  primary,
+  transparent = true,
+  propFunc = null,
+}) => {
   return (
     <>
       <a

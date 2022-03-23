@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, RefObject } from "react";
 import Hero from "./Hero";
 import Information from "./Information";
 import NewsWrapper from "./News/NewsWrapper";
-import Tracker from "./Tracker";
+// import Tracker from "./Tracker";
 
 const Home = () => {
-  const [coinsData, setCoinsData] = useState([]);
-  const trackerSection = useRef(null);
+  const [coinsData, setCoinsData] = useState<any[]>([]);
+  const trackerSection = useRef<HTMLDivElement>(null);
 
   const scrollToTracker = () => {
     trackerSection.current.scrollIntoView({

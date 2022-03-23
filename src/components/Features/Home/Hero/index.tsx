@@ -1,7 +1,11 @@
-import Nav from "../../../AppShell/Nav/Navbar.js";
-import Button from "../../../Common/Button";
+import { FC } from "react";
+import Nav from "../../../AppShell/Nav/Navbar";
+import Button from "../../../Common/Button/index";
 import "./Hero.scss";
-const Hero = ({ scrollToTracker }) => {
+type Props = {
+  scrollToTracker: () => void;
+};
+const Hero: FC<Props> = ({ scrollToTracker }) => {
   return (
     <>
       {/* <Nav propFunc={scrollToTracker} /> */}
@@ -21,10 +25,10 @@ const Hero = ({ scrollToTracker }) => {
             <div className="hero-wrapper-container__btns">
               <Button
                 propFunc={scrollToTracker}
-                text={"Track Now!"}
+                text="Track Now!"
                 primary={true}
               />
-              <Button text={"Learn More"} primary={false} transparent={false} />
+              <Button text="Learn More" primary={false} transparent={false} />
             </div>
           </section>
         </div>

@@ -1,5 +1,6 @@
+import { FC } from "react";
 import "./SkeletonComponent.scss";
-const SkeletonComponent = () => {
+const SkeletonComponent: FC = () => {
   return (
     <>
       <div className="searchbar-skeleton">

@@ -1,19 +1,18 @@
-import { useRef } from "react";
-import dragFunction from "./Drag.js";
-import NewsCardComponent from "./NewsCardComponent/NewsCardComponent.js";
+import { FC, useRef } from "react";
+import dragFunction from "./Drag";
+import NewsCardComponent from "./NewsCardComponent/NewsCardComponent";
 import "./NewsComponent.scss";
-const NewsComponent = ({ data = [], isLoading, error }) => {
-  const ref = useRef(null);
 
-  const { onMouseDown } = dragFunction(ref, { direction: "horizontal" });
+type Props = {
+  data: any[];
+  isLoading: boolean;
+  error: boolean;
+};
+const NewsComponent: FC<Props> = ({ data = [], isLoading, error }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
-  const test = () => {
-    const last = Array.from(document.querySelectorAll(".news-section")).pop();
-    console.log(last);
-    // for (let i of last) {
-    //   console.log(i);
-    // }
-  };
+  const { onMouseDown } = dragFunction(ref);
+
   return (
     <section className="news">
       <h1 className="news__h1">Latest news</h1>
@@ -22,14 +21,12 @@ const NewsComponent = ({ data = [], isLoading, error }) => {
       <div
         className="news-section"
         ref={ref}
-        onClick={test}
         onMouseDownCapture={onMouseDown}
         onMouseUpCapture={() => console.log("NOW")}
       >
         {!isLoading && !error ? (
           data.map((item) => (
-            // <a href={item.url} target="_blank">
-            <a>
+            <a href={item.url} target="_blank" draggable="false">
               <NewsCardComponent data={item} />
             </a>
           ))
@@ -38,7 +35,6 @@ const NewsComponent = ({ data = [], isLoading, error }) => {
         ) : (
           <h1>Error</h1>
         )}
-        <div className="news-section-next">NEXT</div>
       </div>
     </section>
   );

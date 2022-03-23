@@ -1,17 +1,28 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, FC } from "react";
 
-import ResultItemComponent from "./ResultItem/ResultItemComponent.js";
-import SkeletonComponent from "./Skeleton/SkeletonComponent.js";
+import ResultItemComponent from "./ResultItem/ResultItemComponent";
+import SkeletonComponent from "./Skeleton/SkeletonComponent";
 
 import searchIcon from "../../../../../../src/search.png";
 import "./SearchBarComponent.scss";
 
-const SearchbarComponent = ({ onResultClickHandler, onSearchHandler }) => {
-  const [isSearching, setIsSearching] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
-  const [showSearchError, setSearchError] = useState(false);
-  const [showSearchSkeleton, setShowSkeleton] = useState(false);
-  const [searchResults, setSearchResults] = useState(false);
+type Props = {
+  onResultClickHandler: (id: string) => void;
+  onSearchHandler: (
+    controller: AbortController,
+    searchInput: string,
+    currentResults: any
+  ) => Promise<any[] | null>;
+};
+const SearchbarComponent: FC<Props> = ({
+  onResultClickHandler,
+  onSearchHandler,
+}) => {
+  const [isSearching, setIsSearching] = useState<boolean>(false);
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [showSearchError, setSearchError] = useState<boolean>(false);
+  const [showSearchSkeleton, setShowSkeleton] = useState<boolean>(false);
+  const [searchResults, setSearchResults] = useState<any[]>([]);
 
   const resetSearchBar = () => {
     setSearchInput("");
@@ -19,12 +30,12 @@ const SearchbarComponent = ({ onResultClickHandler, onSearchHandler }) => {
     setSearchInput("");
     setIsSearching(false);
     setShowSkeleton(false);
-    setSearchResults(null);
+    setSearchResults([]);
   };
 
-  const inputReference = useRef();
+  const inputReference = useRef<any>();
 
-  const outsideClickSearchBox = (e) => {
+  const outsideClickSearchBox = (e: any) => {
     // Close the search box if we are clicking outside of it
     if (!e.target.className.includes("searchbar")) {
       setIsSearching(false);
@@ -66,7 +77,6 @@ const SearchbarComponent = ({ onResultClickHandler, onSearchHandler }) => {
     }, 200);
 
     return function () {
-      someFn && someFn();
       clearTimeout(optimise);
       controller.abort();
     };

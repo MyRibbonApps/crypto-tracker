@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Nav from "./components/AppShell/Nav/Navbar.js";
+import Nav from "./components/AppShell/Nav/Navbar";
 import Home from "./components/Features/Home";
 import "./App.css";
-import Currency from "./components/Features/Currencies";
-import Signup from "./components/Features/Signup";
+import Currency from "./components/Features/Currencies/index";
+import Signup from "./components/Features/Signup/index";
 
-const App = () => {
+const App: FC = () => {
   useEffect(() => {
     console.log("APP IS GETTING RENDERED");
   }, []);

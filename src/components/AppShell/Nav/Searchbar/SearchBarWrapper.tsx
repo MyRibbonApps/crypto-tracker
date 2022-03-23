@@ -1,15 +1,16 @@
+import { FC } from "react";
 import { useNavigate } from "react-router";
 
 import { postApiRequest } from "../../../../shared/api";
-import SearchBarComponent from "./Searchbar/SearchBarComponent.js";
+import SearchBarComponent from "./Searchbar/SearchBarComponent";
 
-const SearchBar = () => {
+const SearchBar: FC = () => {
   const navigate = useNavigate();
 
   const onSearchHandler = async (
-    controller = new AbortController(),
-    searchInput,
-    currentResults
+    controller: AbortController = new AbortController(),
+    searchInput: string,
+    currentResults: any
   ) => {
     const body = {
       searchInput,
@@ -22,7 +23,7 @@ const SearchBar = () => {
       return res;
 
       //
-    } catch (e) {
+    } catch (e: any) {
       console.dir(e);
       if (e && e.message && e.message === "The user aborted a request.") {
         console.log("EHHHHH");
@@ -32,7 +33,7 @@ const SearchBar = () => {
     }
   };
 
-  const onResultClickHandler = (id) => {
+  const onResultClickHandler = (id: string) => {
     console.log(id);
     navigate(`/currencies/${id}`);
   };

@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
-import searchIcon from "../../../../../../src/search.png";
 import ResultItemComponent from "./ResultItem/ResultItemComponent.js";
 import SkeletonComponent from "./Skeleton/SkeletonComponent.js";
 
+import searchIcon from "../../../../../../src/search.png";
 import "./SearchBarComponent.scss";
 
 const SearchbarComponent = ({ onResultClickHandler, onSearchHandler }) => {
@@ -61,11 +61,12 @@ const SearchbarComponent = ({ onResultClickHandler, onSearchHandler }) => {
       }
 
       setSearchError(true);
-      setSearchResults(null);
+      setSearchResults(searchResults);
       setShowSkeleton(false);
     }, 200);
 
     return function () {
+      someFn && someFn();
       clearTimeout(optimise);
       controller.abort();
     };

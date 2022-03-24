@@ -1,0 +1,57 @@
+@import "/Theme.scss";
+$breakpointcollapsenav: 900px;
+
+.searchbar {
+  @media (min-width: 970px) {
+    display: initial;
+  }
+
+  &-searchresults {
+    background-color: rgb(23, 25, 36);
+    max-height: 300px;
+    overflow-y: scroll;
+    top: 110%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 450px;
+    @media (max-width: $breakpointcollapsenav) {
+      top: 92%;
+      width: 95%;
+      margin: auto;
+      max-width: 100%;
+    }
+    border-radius: 5px;
+    position: absolute;
+    &-resultwrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding: 8px 16px;
+      transition: 300ms;
+      &:hover {
+        background-color: rgb(33, 36, 51);
+        cursor: pointer;
+      }
+      &-noresults {
+        &__h1 {
+          font-size: 16px;
+          color: white;
+          font-weight: 400;
+          text-align: center;
+          padding-top: 30px;
+        }
+        &__p {
+          font-size: 14px;
+          color: rgb(207, 214, 228);
+          font-weight: 300;
+          text-align: center;
+          width: 80%;
+          margin: auto;
+          padding-bottom: 20px;
+        }
+      }
+    }
+  }
+}

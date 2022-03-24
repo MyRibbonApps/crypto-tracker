@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef, FC } from "react";
 
-import ResultItemComponent from "./ResultItem/ResultItemComponent";
-import SkeletonComponent from "./Skeleton/SkeletonComponent";
+import ResultItemComponent from "./SearchResults/ResultItem/ResultItemComponent";
+import SkeletonComponent from "./SearchResults/Skeleton/SkeletonComponent";
+import SearchInputComponent from "./SearchInput/SearchInputComponent";
+import SearchResultsComponent from "./SearchResults/SearchResultsComponent";
 
-import searchIcon from "../../../../../../src/search.png";
 import "./SearchBarComponent.scss";
+import { postApiRequest } from "../../../../../shared/api";
 
 type Props = {
   onResultClickHandler: (id: string) => void;
-  onSearchHandler: (
+  onSearchHandle: (
     controller: AbortController,
     searchInput: string,
     currentResults: any
@@ -16,7 +18,7 @@ type Props = {
 };
 const SearchbarComponent: FC<Props> = ({
   onResultClickHandler,
-  onSearchHandler,
+  onSearchHandle,
 }) => {
   const [isSearching, setIsSearching] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
@@ -33,6 +35,31 @@ const SearchbarComponent: FC<Props> = ({
     setSearchResults([]);
   };
 
+  const onSearchHandler = async (
+    controller: AbortController = new AbortController(),
+    searchInput: string,
+    currentResults: any
+  ) => {
+    const body = {
+      searchInput,
+    };
+    try {
+      const res = await postApiRequest("http://localhost:3001/searchCrypto", {
+        body: JSON.stringify(body),
+        signal: controller.signal,
+      });
+      return res;
+
+      //
+    } catch (e: any) {
+      console.dir(e);
+      if (e && e.message && e.message === "The user aborted a request.") {
+        console.log("EHHHHH");
+        return currentResults;
+      }
+      return null;
+    }
+  };
   const inputReference = useRef<any>();
 
   const outsideClickSearchBox = (e: any) => {
@@ -43,11 +70,13 @@ const SearchbarComponent: FC<Props> = ({
   };
 
   useEffect(() => {
+    // onSearchHandler(new AbortController(), searchInput, searchResults);
     if (searchInput.trim() === "") {
       // If the input is empty we don't show the searchBox it anymore
       resetSearchBar();
       return;
     }
+    if (!isSearching) setShowSkeleton(true);
 
     setIsSearching(true);
     setSearchError(false);
@@ -92,11 +121,12 @@ const SearchbarComponent: FC<Props> = ({
       className="searchbar"
       onClick={() => {
         inputReference.current.focus();
+        console.log(inputReference);
       }}
     >
       {/* INPUT START */}
-      <span
-        onClick={() => setIsSearching(true)}
+      {/* <span
+        onClick={() => inputReference.current.focus()}
         className={
           isSearching
             ? "searchbar-inputcontainer searchbar-inputcontainer--active"
@@ -114,64 +144,69 @@ const SearchbarComponent: FC<Props> = ({
             placeholder="Search for crypto asset..."
           ></input>
         </form>
-      </span>
+      </span> */}
+      <SearchInputComponent />
       {/* INPUT END*/}
 
       {/* SEARCHRESULT START */}
       {isSearching && searchInput !== "" ? (
-        <div className="searchbar-searchresults">
-          {/* If searching, show skeleton */}
-          {showSearchSkeleton ? (
-            <span>
-              {Array.apply(null, Array(3)).map((item, index) => {
-                return (
-                  <div key={index}>
-                    <SkeletonComponent />
-                  </div>
-                );
-              })}
-              <br />
-            </span>
-          ) : // If error show error
-          showSearchError ? (
-            <span className="searchbar-searchresults-resultwrapper-noresults">
-              <h1 className="searchbar-searchresults-resultwrapper-noresults__h1">
-                Opps
-              </h1>
-              <p className="searchbar-searchresults-resultwrapper-noresults__p">
-                Something went wrong.. Try again or wait a few minutes.
-              </p>
-            </span>
-          ) : // If results is more than 0, show results
-          searchResults?.length > 0 ? (
-            searchResults.map((coin) => {
-              return (
-                <div
-                  onClick={() => {
-                    resetSearchBar();
-                    onResultClickHandler(coin.id);
-                  }}
-                  key={coin.id}
-                  className="searchbar-searchresults-resultwrapper"
-                >
-                  <ResultItemComponent coin={coin} />
-                </div>
-              );
-            })
-          ) : // If results is 0, show no results
-          searchResults?.length === 0 ? (
-            <span className="searchbar-searchresults-resultwrapper-noresults">
-              <h1 className="searchbar-searchresults-resultwrapper-noresults__h1">
-                No results
-              </h1>
-              <p className="searchbar-searchresults-resultwrapper-noresults__p">
-                We couldn't find anything matching your search. Try again with a
-                different term.
-              </p>
-            </span>
-          ) : null}
-        </div>
-      ) : null}
+        <SearchResultsComponent />
+      ) : // <div
+      //   className="searchbar-searchresults"
+      //   data-testid="searchResultItems"
+      // >
+      //   {/* If searching, show skeleton */}
+      //   {showSearchSkeleton ? (
+      //     <span>
+      //       {Array.apply(null, Array(3)).map((item, index) => {
+      //         return (
+      //           <div key={index}>
+      //             <SkeletonComponent />
+      //           </div>
+      //         );
+      //       })}
+      //       <br />
+      //     </span>
+      //   ) : // If error show error
+      //   showSearchError ? (
+      //     <span className="searchbar-searchresults-resultwrapper-noresults">
+      //       <h1 className="searchbar-searchresults-resultwrapper-noresults__h1">
+      //         Opps
+      //       </h1>
+      //       <p className="searchbar-searchresults-resultwrapper-noresults__p">
+      //         Something went wrong.. Try again or wait a few minutes.
+      //       </p>
+      //     </span>
+      //   ) : // If results is more than 0, show results
+      //   searchResults?.length > 0 ? (
+      //     searchResults.map((coin) => {
+      //       return (
+      //         <div
+      //           onClick={() => {
+      //             resetSearchBar();
+      //             onResultClickHandler(coin.id);
+      //           }}
+      //           key={coin.id}
+      //           className="searchbar-searchresults-resultwrapper"
+      //         >
+      //           <ResultItemComponent coin={coin} />
+      //         </div>
+      //       );
+      //     })
+      //   ) : // If results is 0, show no results
+      //   searchResults?.length === 0 ? (
+      //     <span className="searchbar-searchresults-resultwrapper-noresults">
+      //       <h1 className="searchbar-searchresults-resultwrapper-noresults__h1">
+      //         No results
+      //       </h1>
+      //       <p className="searchbar-searchresults-resultwrapper-noresults__p">
+      //         We couldn't find anything matching your search. Try again with a
+      //         different term.
+      //       </p>
+      //     </span>
+      //   ) : null}
+      // </div>
+      null}
       {/* SEARCHRESULT END */}
     </span>
   );

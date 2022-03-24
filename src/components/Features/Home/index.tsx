@@ -6,7 +6,7 @@ import NewsWrapper from "./News/NewsWrapper";
 
 const Home = () => {
   const [coinsData, setCoinsData] = useState<any[]>([]);
-  const trackerSection = useRef<HTMLDivElement>(null);
+  const trackerSection = useRef<HTMLDivElement | any>(null);
 
   const scrollToTracker = () => {
     trackerSection.current.scrollIntoView({

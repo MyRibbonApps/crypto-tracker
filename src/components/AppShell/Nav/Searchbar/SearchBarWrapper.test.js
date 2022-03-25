@@ -1,27 +1,25 @@
+// Integration testing the full searchbar
 import React from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import SearchbarComponent from "./Searchbar/SearchBarComponent";
+import SearchbarComponent from "./TESTFORTESTS/SearchBarComponent";
 import SearchBarWrapper from "./SearchBarWrapper";
 import { postApiRequest } from "../../../../shared/api";
 
+import { searchResultsData } from "../../../../../sharedTests/data";
+
 // declare which API requests to mock
 const server = setupServer(
-  // capture "GET /greeting" requests
+  // capture "POST /searchCrypto requests
   rest.post("http://localhost:3001/searchCrypto", (req, res, ctx) => {
     // respond using a mocked JSON body
     console.log("Is called");
     return res(
       ctx.status(200).ctx.json({
-        data: {
-          name: "Bitcoin",
-          symbol: "BTC",
-          market_cap_rank: "10",
-          thumb: "",
-        },
+        data: searchResultsData,
       })
     );
   })

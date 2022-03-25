@@ -1,6 +1,8 @@
 import { Dispatch, FC, RefObject, SetStateAction, useRef } from "react";
 import searchIcon from "../../../../../../src/search.png";
 
+import "./SearchInputComponent.scss";
+
 type SearchInputComponentProps = {
   searchInput: string;
   setSearchInput: Dispatch<SetStateAction<string>>;

@@ -3,7 +3,7 @@ import "./SkeletonComponent.scss";
 const SkeletonComponent: FC = () => {
   return (
     <>
-      <div className="searchbar-skeleton">
+      <div data-testid="skeletonID" className="searchbar-skeleton">
         <span className="searchbar-skeleton-leftcontent">
           <span className="searchbar-skeleton-leftcontent__img--skeleton"></span>
           <span className="searchbar-skeleton-leftcontent__name--skeleton"></span>

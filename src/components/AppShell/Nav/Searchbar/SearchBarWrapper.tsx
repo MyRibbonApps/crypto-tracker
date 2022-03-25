@@ -3,8 +3,8 @@ import { useNavigate } from "react-router";
 
 import { postApiRequest } from "../../../../shared/api";
 
-import SearchInputComponent from "./Searchbar/SearchInput/SearchInputComponent";
-import SearchResultsComponent from "./Searchbar/SearchResults/SearchResultsComponent";
+import SearchInputComponent from "./SearchInput/SearchInputComponent";
+import SearchResultsComponent from "./SearchResults/SearchResultsComponent";
 
 const onSearchHandler = async (
   controller: AbortController = new AbortController(),
@@ -25,7 +25,6 @@ const onSearchHandler = async (
   } catch (e: any) {
     console.dir(e);
     if (e && e.message && e.message === "The user aborted a request.") {
-      console.log("EHHHHH");
       return currentResults;
     }
     return null;

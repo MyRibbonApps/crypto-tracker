@@ -12,14 +12,43 @@
   transition: 300ms;
   text-align: center;
   white-space: nowrap;
+  &-filled {
+    &-primary {
+      background-color: #b90000;
+      color: white;
+      &:hover {
+        background-color: #8b0000;
+        color: white;
+      }
+    }
+    &-light {
+      background-color: white;
+      color: black;
+      &:hover {
+        background-color: whitesmoke;
+        color: black;
+      }
+    }
+    &-dark {
+      background-color: black;
+      color: white;
+      border: 1px solid #858585;
+      &:hover {
+        color: rgb(211, 211, 211);
+      }
+    }
+  }
+  &-outline {
+  }
   &--primary {
-    background-color: $primary--color;
+    background-color: #b90000;
     color: white;
     &:hover {
-      background-color: #116bac;
+      background-color: #8b0000;
       color: white;
     }
   }
+
   &--white {
     background-color: white;
     color: black;

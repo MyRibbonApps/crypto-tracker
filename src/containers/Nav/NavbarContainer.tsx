@@ -59,10 +59,14 @@ const Nav = () => {
               ></img>
             </li>
             <li className="nav-ul__items__li nav-ul__items__li--btn">
-              <Button text={"Sign up"} primary={true} />
+              <Button mode="filled" theme="dark">
+                Log in
+              </Button>
             </li>
             <li className="nav-ul__items__li nav-ul__items__li--btn nav-ul__items__li--btn--lastonmobile">
-              <Button text={"Sign in"} primary={false} />
+              <Button mode="filled" theme="light">
+                Sign up
+              </Button>
             </li>
           </div>
         </div>

@@ -1,0 +1,13 @@
+.movies {
+  &-title {
+    font-size: 2rem;
+    color: white;
+  }
+  &-cardcontainer {
+    display: block;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    gap: 30px;
+  }
+}

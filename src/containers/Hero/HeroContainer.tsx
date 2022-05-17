@@ -14,20 +14,24 @@ const Hero: FC<Props> = ({ scrollToTracker }) => {
           <section className="hero-wrapper-container">
             <div className="hero-wrapper-container__textwrapper">
               <h1 className="hero-wrapper-container__h1">
-                Stay up to date on the latest{" "}
-                <span className="hero-wrapper-container__h1--underline">
+                NFT Cinema Tickets
+                {/* <span className="hero-wrapper-container__h1--underline">
                   crypto
                 </span>{" "}
-                prices
+                prices */}
               </h1>
+              <p className="hero-wrapper-container__p">
+                Own your tickets on the blockchain.
+              </p>
             </div>
             <div className="hero-wrapper-container__btns">
-              <Button
-                propFunc={scrollToTracker}
-                text="Track Now!"
-                primary={true}
-              />
-              <Button text="Learn More" primary={false} transparent={false} />
+              <Button mode="filled" theme="dark" onClick={scrollToTracker}>
+                Find movies
+              </Button>
+
+              <Button mode="filled" theme="light">
+                Learn More
+              </Button>
             </div>
           </section>
         </div>

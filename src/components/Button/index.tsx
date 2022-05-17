@@ -1,21 +1,17 @@
 import { FC } from "react";
 import "./Button.scss";
 
-type Props = {
-  text: string;
-  primary: boolean;
-  transparent?: boolean;
-  propFunc?: () => void | null;
+type ButtonProps = React.ComponentPropsWithoutRef<"button"> & {
+  theme: "primary" | "light" | "dark";
+  mode: "filled" | "outline";
 };
-const Button: FC<Props> = ({
-  text,
-  primary,
-  transparent = true,
-  propFunc = null,
-}) => {
+const Button = ({ children, theme, mode, ...props }: ButtonProps) => {
   return (
     <>
-      <a
+      <button {...props} className={`button button-${mode}-${theme}`}>
+        {children}
+      </button>
+      {/* <a
         onClick={() => (propFunc ? propFunc() : null)}
         className={`button${
           primary
@@ -26,7 +22,7 @@ const Button: FC<Props> = ({
         }`}
       >
         {text}
-      </a>
+      </a> */}
     </>
   );
 };

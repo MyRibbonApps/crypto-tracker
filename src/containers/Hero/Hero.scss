@@ -8,7 +8,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: url("/bg-img-crypto.jpg");
+    background-image: url("/cover-image.jpg");
     opacity: 0.7;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,7 +19,7 @@
     @media (min-width: $breakpoint-desktop-large) {
       background-position: center center;
     }
-    filter: blur(6px);
+    filter: blur(3px);
     z-index: 2;
     &::before {
       content: "";
@@ -74,23 +74,35 @@
           width: 90%;
         }
         color: white;
-        font-size: 45px;
-        width: 60%;
+        font-size: 60px;
+        // width: 60%;
         margin: auto;
         text-align: center;
+        line-height: 1.2;
         &--underline {
           position: relative;
           z-index: 2;
-          &::after {
-            content: "";
-            position: absolute;
-            border: 7px solid $primary--color;
-            bottom: 5px;
-            right: 0;
-            left: 0;
-            z-index: -1;
-          }
+          // &::after {
+          //   content: "";
+          //   position: absolute;
+          //   border: 7px solid $primary--color;
+          //   bottom: 5px;
+          //   right: 0;
+          //   left: 0;
+          //   z-index: -1;
+          // }
         }
+      }
+      &__p {
+        @media (max-width: $breakpoint-tablet) {
+          font-size: 16px;
+          width: 90%;
+        }
+        color: white;
+        font-size: 23px;
+        // width: 60%;
+        margin: auto;
+        text-align: center;
       }
       &__btns {
         margin-top: 2rem;

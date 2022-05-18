@@ -1,13 +1,33 @@
 .movies {
+  margin-top: 40px;
   &-title {
     font-size: 2rem;
     color: white;
+    // width: 85%;
+    // max-width: 1600px;
+    margin: auto;
+    text-align: center;
   }
   &-cardcontainer {
-    display: block;
-    width: 95%;
+    width: 85%;
+    max-width: 1600px;
+    display: grid;
+    justify-items: center;
+    place-items: center;
     margin: auto;
-    display: flex;
-    gap: 30px;
+    @media (min-width: 600px) {
+      grid-template-columns: 270px 270px;
+    }
+
+    @media (min-width: 920px) {
+      grid-template-columns: 270px 270px 270px;
+    }
+    @media (min-width: 1300px) {
+      grid-template-columns: 270px 270px 270px 270px;
+    }
+    column-gap: 20px;
+    row-gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
   }
 }

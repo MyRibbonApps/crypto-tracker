@@ -1,0 +1,18 @@
+.tablelistings {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  justify-content: space-between;
+  width: 85%;
+  margin: auto;
+  background-color: white;
+  @media (min-width: 600px) {
+    max-width: 880px;
+  }
+  @media (min-width: 920px) {
+    max-width: 880px;
+  }
+  @media (min-width: 1300px) {
+    max-width: 1140px;
+  }
+}

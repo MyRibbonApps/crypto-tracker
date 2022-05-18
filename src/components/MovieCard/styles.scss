@@ -1,0 +1,115 @@
+.moviecard {
+  width: 270px;
+  border-radius: 10px;
+  border: 1px solid #454545;
+  transition: 300ms;
+  @mixin title {
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+  }
+  @mixin hover {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    position: relative;
+    &-dots {
+      height: 15px;
+      width: 25px;
+      position: absolute;
+      right: 0;
+      top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @include hover;
+      &__img {
+        height: 4px;
+        width: 14px;
+      }
+    }
+    &-image {
+      width: 224px;
+      height: 247px;
+      padding-top: 40px;
+      &__img {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        object-fit: fill;
+        @include hover;
+      }
+    }
+    &-content {
+      width: 90%;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      &-movieinfo {
+        display: flex;
+        justify-content: space-between;
+        @include hover;
+        &__title {
+          @include title;
+        }
+        &-icon {
+          height: 20px;
+          width: 20px;
+          background-color: #363636;
+          border-radius: 100px;
+          padding-top: 4px;
+          padding-bottom: 8px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          &__img {
+            display: block;
+            height: 13px;
+            width: 13px;
+          }
+        }
+      }
+      &-priceinfo {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #585858;
+        &__title {
+          @include title;
+          cursor: text;
+        }
+        &__button {
+          font-size: 12px;
+          color: white;
+          @include hover;
+        }
+      }
+      &-sellerinfo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-top: 15px;
+        &__title {
+          font-size: 12px;
+          color: white;
+          font-weight: 500;
+          &:hover {
+            cursor: text;
+          }
+        }
+        &__img {
+          height: 23px;
+          width: 23px;
+        }
+      }
+    }
+  }
+}
